@@ -1,0 +1,18 @@
+{
+  "name": "witte_automotive/ambulance_connector",
+  "description": "Connector for connection to the Penta Hospitals ambulance booking system",
+  "type": "library",
+  "license": [
+    "MIT"
+  ],
+  "autoload": {
+    "classmap": [
+      "src/"
+    ]
+  },
+  "require": {
+    "php": ">=8.0",
+    "ext-soap": "*"
+  },
+  "minimum-stability": "stable"
+}
