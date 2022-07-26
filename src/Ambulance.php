@@ -111,7 +111,6 @@ final class Ambulance extends Gateway implements IGateway
     {
         if ($res = $this->call("rezervujTermin", $client, $workplace->getId(), $calendar, $startTime->getTimestamp(), $endTime->getTimestamp(), $text)) {
             if ($reservationId = (int)$res->getData("rezervace_id")) {
-                dump($reservationId);
                 return $reservationId;
             }
         }
