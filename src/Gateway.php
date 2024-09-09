@@ -23,7 +23,18 @@ class Gateway implements IGateway
         if ($this->uri) {
             $this->soapObject = new \SoapClient(null, [
                 "location" => $this->uri,
-                "uri" => $this->uri
+                "uri" => $this->uri,
+				'soap_version' => SOAP_1_2,            // Použití verze SOAP 1.2, můžete změnit na SOAP_1_1, pokud je třeba
+				'exceptions' => true,                  // Vyvolání výjimek v případě chyb
+				'trace' => 1,                          // Povolení ladění, můžete sledovat požadavky a odpovědi
+				'cache_wsdl' => WSDL_CACHE_NONE,       // Zakázání cache WSDL
+				'stream_context' => stream_context_create([
+					'ssl' => [
+						'verify_peer' => false,        // Vypnutí ověřování SSL certifikátu
+						'verify_peer_name' => false,   // Vypnutí ověřování jména serveru
+						'allow_self_signed' => true    // Povolení self-signed certifikátů
+					]
+				])
             ]);
         } else {
             throw new ConfigurationException("Parameter of URI is missing.");
