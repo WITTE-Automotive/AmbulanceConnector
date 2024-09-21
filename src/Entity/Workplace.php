@@ -50,4 +50,9 @@ class Workplace
         $this->reservationDates = $reservationDates;
     }
 
+    public function setControlType(string $controlType)
+    {
+        $this->controlType = $controlType;
+    }
+
 }
